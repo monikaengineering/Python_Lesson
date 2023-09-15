@@ -9,15 +9,6 @@ const WeatherApp = () => {
         className = 'cityInput'
         placeholder='Enter your city'
         />
-        <div className='search-icon'>
-        </div>
-        <div className='weather-image'>
-        </div>
-        <div className='data-container'>
-          <div className='elementr'>
-            
-          </div>
-        </div>
       </div>
     </div>
   );
