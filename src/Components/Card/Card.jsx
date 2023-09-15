@@ -7,7 +7,6 @@ const WeatherApp = () => {
   const fetchData = async () => {
     try {
       const respone = await axios.get(
-        let api = 'a54b1716f864bb78d3e211aba25d0394';
         
       )
     }
