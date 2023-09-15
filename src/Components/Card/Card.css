@@ -34,14 +34,9 @@
   height: #ebfffc;
   background-color: rgb(202, 202, 212);
   border-radius: 30px;
-  : 14px;
 }
 
 .weather-image {
   margin-top: 29px;
   display: flex;
-}
-
-.weather-temp {
-
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
+import WeatherApp from './Components/Card/Card';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Create weather app
+          <WeatherApp />
         </p>
       </header>
     </div>
