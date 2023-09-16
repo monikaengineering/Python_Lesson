@@ -4,13 +4,12 @@ import WeatherApp from './Components/Card/Card';
 import InputForm from './Components/InputForm/InputForm';
 
 function App() {
+  const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          <WeatherApp />
-        </p>
-      </header>
+        <h1>
+          <WeatherApp/>
+        </h1>
     </div>
   );
 }

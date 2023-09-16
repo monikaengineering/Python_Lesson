@@ -1,17 +1,33 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import './InputForm.css';
 
-import search_icon from '../Assets/search-icon.png';
-
 function InputForm () {
+  const [City, setCity] = useState("");
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const response = async () => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${YOUR_API_KEY}`;
+      const {data} = await axios.get(url);
+
+    }
+    response();
+  },[]);
+
   return(
-    <div class = "container">
+    <form>
+      <div className="w">
       <input 
       type = "text"
+      value = {name}
       placeholder="Enter your city"
+      onChange={ handleChange }
       />
-      <img className = 'search' src={search_icon} alt = 'search_icon'/>
-    </div>
+      <button className="btn btn-primary" type="button">Search</button>
+      </div>
+    </form>
   );
 }
 

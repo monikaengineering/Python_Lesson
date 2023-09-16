@@ -1,15 +1,15 @@
+import InputForm from '../InputForm/InputForm';
 import './Card.css';
 
 const WeatherApp = () => {
+  const fetchData = async () => {
+    try{
+      const response = await Axios.get()
+    }
+  }
   return (
     <div className = 'container'>
-      <div className = 'top-bar'>
-        <input 
-        type = 'text'
-        className = 'cityInput'
-        placeholder='Enter your city'
-        />
-      </div>
+      <InputForm />
     </div>
   );
 }
