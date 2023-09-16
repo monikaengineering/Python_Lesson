@@ -9,8 +9,9 @@ function InputForm () {
 
   useEffect(() => {
     const response = async () => {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${YOUR_API_KEY}`;
-      const {data} = await axios.get(url);
+      const url = 'https://api.openweathermap.org/data/2.5/weather?q=Phnom Penh&appid=a54b1716f864bb78d3e211aba25d0394';
+      const response = await axios.get(url);
+      console.log(response.data)
 
     }
     response();
@@ -19,12 +20,7 @@ function InputForm () {
   return(
     <form>
       <div className="w">
-      <input 
-      type = "text"
-      value = {name}
-      placeholder="Enter your city"
-      onChange={ handleChange }
-      />
+
       <button className="btn btn-primary" type="button">Search</button>
       </div>
     </form>
