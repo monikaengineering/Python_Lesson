@@ -1,0 +1,34 @@
+.container--details {
+  align-items: center;
+  font-family: Oxygen, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.weather--box {
+  text-align: center;
+  width: 100%;
+
+  .weather--box__main-content {
+
+    .weather--main-content {
+      margin-bottom: 1.5em;
+      align-items: center;
+      align-self: center;
+
+    }
+  }
+  .weather__degrees {
+    font-size: 250%;
+    font-weight: bold;
+  }
+  .weather--box__details-content > h3 {
+    margin-bottom: 16%;
+  }
+
+}
+
