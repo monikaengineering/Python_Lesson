@@ -1,34 +1,122 @@
-import React, { useState } from 'react';
-import './App.css';
-import { useEffect } from 'react';
-import axios from 'axios';
-import WeatherApp from './Components/Card/Card';
-import InputForm from './Components/InputForm/InputForm';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import SearchEngine from "./Components/Card/Card";
+import Forecast from "./Components/InputForm/InputForm";
+
+import "./App.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
-  const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const [data, setData] = useState({
-    celcius: 10,
-    name: 'London',
-    humidity: 10,
-    speed: 2,
+  const [query, setQuery] = useState();
+  const [weather, setWeather] = useState({
+    loading: true,
+    data: {},
+    error: false
   });
-  
-  const [city, setName] = useState();
+
+  const toDate = () => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "Nocvember",
+      "December"
+    ];
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+    const currentDate = new Date();
+    const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
+      months[currentDate.getMonth()]
+    }`;
+    return date;
+  };
+
+  const search = async (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      setQuery("");
+      setWeather({ ...weather, loading: true });
+      const apiKey = "b03a640e5ef6980o4da35b006t5f2942";
+      const url = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}`;
+
+      await axios
+        .get(url)
+        .then((res) => {
+          console.log("res", res);
+          setWeather({ data: res.data, loading: false, error: false });
+        })
+        .catch((error) => {
+          setWeather({ ...weather, data: {}, error: true });
+          setQuery("");
+          console.log("error", error);
+        });
+    }
+  };
 
   useEffect(() => {
-    const response = async () => {
-      const url = 'https://api.openweathermap.org/data/2.5/weather?q=Battambang&appid=a54b1716f864bb78d3e211aba25d0394';
-      const response = await axios.get(url);
-    }
-    response();
-  },[]);
+    const fetchData = async () => {
+      const apiKey = "b03a640e5ef6980o4da35b006t5f2942";
+      const url = `https://api.shecodes.io/weather/v1/current?query=Rabat&key=${apiKey}`;
+
+      try {
+        const response = await axios.get(url);
+
+        setWeather({ data: response.data, loading: false, error: false });
+      } catch (error) {
+        setWeather({ data: {}, loading: false, error: true });
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
-        <h1>
-          
-        </h1>
+
+      {/* SearchEngine component */}
+      <SearchEngine query={query} setQuery={setQuery} search={search} />
+
+      {weather.loading && (
+        <>
+          <br />
+          <br />
+          <h4>Searching..</h4>
+        </>
+      )}
+
+      {weather.error && (
+        <>
+          <br />
+          <br />
+          <span className="error-message">
+            <span style={{ fontFamily: "font" }}>
+              Sorry city not found, please try again.
+            </span>
+          </span>
+        </>
+      )}
+
+      {weather && weather.data && weather.data.condition && (
+        // Forecast component
+        <Forecast weather={weather} toDate={toDate} />
+      )}
     </div>
   );
 }
