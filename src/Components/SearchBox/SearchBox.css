@@ -1,0 +1,45 @@
+input {
+    border-radius: 30px;
+    margin-top: 5px;
+    padding-left: 30px;
+    margin-left: 10px;
+  }
+
+.SearchBox input {
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-radius: 5px; /* Updated */
+    padding: 2px 15px;
+    font-size: 16px;
+    outline: none;
+    background-color: #fff;
+    color: #555;
+  }
+  
+  .SearchBox input::placeholder {
+    color: #555;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .SearchBox button {
+    width: 78px; /* Updated */
+    height: 44px; /* Updated */
+    border: none;
+    border-radius: 9%; /* Updated */
+    background-color: #84cef5; /* Updated */
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .SearchBox button:hover {
+    background-color: #fff;
+  }
+  
+  .SearchBox button:hover i {
+    color: #f06789;
+  }
+  
